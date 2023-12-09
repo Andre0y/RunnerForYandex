@@ -17,10 +17,10 @@ public static class InputManager
 
     public static bool IsLeftMouseButtonDown()
     {
-        if (getDeviceType() == "mobile")
-        {
-            return true;
-        }
+        ////if (getDeviceType() == "mobile")
+        ////{
+        ////    return true;
+        ////}
 
         if (Input.GetMouseButton(0))
         {
