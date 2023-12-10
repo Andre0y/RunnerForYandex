@@ -6,7 +6,7 @@ public class PlayerShoot : MonoBehaviour
 
     private float _timeBetweenShoots;
     private float _timeAfterShoot;
-
+    
     private Vector3 _bulletSpawnPosition;
     private Gun _gun;
 
