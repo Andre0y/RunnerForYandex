@@ -10,7 +10,7 @@ public class PlayerTracker : MonoBehaviour
     {
         if (_target == null)
         {
-            _target = GameObject.Find("Player").transform;
+            _target = FindObjectOfType<Player>().transform;
         }
 
         if (_offset == Vector2.zero && _target != null)
