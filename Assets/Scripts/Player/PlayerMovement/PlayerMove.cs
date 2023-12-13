@@ -8,18 +8,18 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float _minPositionX;
     [SerializeField] private float _maxPositionX;
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (InputManager.IsMoving("Mouse X") && InputManager.IsLeftMouseButtonDown())
         {
             Vector3 newPositionX = transform.position + transform.right * InputManager.GetAxis("Mouse X");
             newPositionX.x = Mathf.Clamp(newPositionX.x, _minPositionX, _maxPositionX);
 
-            transform.position = Vector3.MoveTowards(transform.position, newPositionX, _speedX * Time.fixedDeltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, newPositionX, _speedX * Time.deltaTime);
         }
 
         Vector3 newPositionZ = transform.position + transform.forward * _moveZ;
 
-        transform.position = Vector3.MoveTowards(transform.position, newPositionZ, _speedZ * Time.fixedDeltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, newPositionZ, _speedZ * Time.deltaTime);
     }
 }
