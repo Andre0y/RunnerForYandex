@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private int _damage;
+    [SerializeField] private BulletData _bulletData;
 
-    public int Damage => _damage;
+    private void Start()
+    {
+        Destroy(gameObject, _bulletData.LifeTime);
+    }
 
     private void Update()
     {
@@ -14,8 +16,7 @@ public class Bullet : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * _speed);
-        Destroy(gameObject, 5f);
+        transform.Translate(Vector3.forward * Time.deltaTime * _bulletData.Speed);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,7 +24,7 @@ public class Bullet : MonoBehaviour
         if (other.TryGetComponent(out Enemy enemy))
         {
             Destroy(gameObject);
-            enemy.BulletHit?.Invoke(Damage);
+            enemy.BulletHit?.Invoke(_bulletData.Damage);
         }
     }
 }
