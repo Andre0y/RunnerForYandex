@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
     private TextMeshProUGUI _healthText;
 
-    public UnityAction<int> BulletHit;
+    public UnityAction<int> BulletHitted;
     public int Health => _health;
 
     private void Start()
@@ -19,12 +19,12 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        BulletHit += OnBulletHit;
+        BulletHitted += OnBulletHit;
     }
 
     private void OnDestroy()
     {
-        BulletHit -= OnBulletHit;
+        BulletHitted -= OnBulletHit;
     }
 
     private void OnBulletHit(int damage)
