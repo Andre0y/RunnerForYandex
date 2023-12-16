@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848c7c6a0d2c1f342b3c721e8e976eb3, type: 3}
   m_Name: Thompson
   m_EditorClassIdentifier: 
-  ShootPoint: {fileID: 0}
+  ShootPointName: ShootPointThompson
   Reload: 1
+  Damage: 1
   FiringRange: 5
+  BulletSpeed: 5

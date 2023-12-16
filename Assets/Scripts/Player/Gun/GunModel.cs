@@ -3,10 +3,13 @@ using UnityEngine;
 public class GunModel : MonoBehaviour
 {
     [SerializeField] private GunData _gunData;
-    [SerializeField] private BulletData _bulletData;
-    [SerializeField] private Transform _shootPoint;
-    [SerializeField] private float _reload;
-
+    
+    private Transform _shootPoint;
+    private float _reload;
+    private int _damage;
+    private float _firingRange;
+    private float _bulletSpeed;
+    
     private void Start()
     {
         Initialize();
@@ -15,6 +18,10 @@ public class GunModel : MonoBehaviour
     private void Initialize()
     {
         _shootPoint = LocatorManager.Instance.GetLocator(_gunData.ShootPointName).GetComponent<Transform>();
+        
         _reload = _gunData.Reload;
+        _damage = _gunData.Damage;
+        _firingRange = _gunData.FiringRange;
+        _bulletSpeed = _gunData.BulletSpeed;
     }
 }

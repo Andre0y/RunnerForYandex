@@ -3,13 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BulletData", menuName = "New Bullet Data")]
 public class BulletData : ScriptableObject
 {
-    public int Damage;
-    public int Speed;
-    public int LifeTime;
+    [SerializeField] private GunData _gunData;
 
-    public int UpgradeDamage(int additiveDamage) => Damage += additiveDamage;
+    public int UpgradeDamage(int additiveDamage) => _gunData.Damage += additiveDamage;
 
-    public int UpgradeSpeed(int additiveSpeed) => Speed += additiveSpeed;
+    public float UpgradeSpeed(float additiveSpeed) => _gunData.BulletSpeed += additiveSpeed;
 
-    public int UpgradeLifeTime(int additiveLifeTime) => LifeTime += additiveLifeTime;
+    public float UpgradeLifeTime(float additiveFiringRange) => _gunData.FiringRange += additiveFiringRange;
 }

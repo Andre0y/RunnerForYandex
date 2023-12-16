@@ -5,5 +5,7 @@ public class GunData : ScriptableObject
 {
     public string ShootPointName;
     public float Reload;
+    public int Damage;
     public float FiringRange;
+    public float BulletSpeed;
 }
