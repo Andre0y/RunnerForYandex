@@ -13,9 +13,9 @@ public class PlayerShoot : MonoBehaviour
     private void Start()
     {
         _gun = GetComponentInChildren<Gun>();
-        _bulletSpawnPosition = _gun.ShootPoint.position;
+        //_bulletSpawnPosition = _gun.ShootPoint.position;
 
-        _timeBetweenShoots = _gun.Reload;
+        //_timeBetweenShoots = _gun.Reload;
     }
 
     private void Update()
