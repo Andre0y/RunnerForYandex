@@ -7,13 +7,12 @@ public class PlayerShoot : MonoBehaviour
     private float _timeBetweenShoots;
     private float _timeAfterShoot;
     
-    private Vector3 _bulletSpawnPosition;
+    private Vector3 _bulletSpawnPosition => _gun.ShootPoint.position;
     private Gun _gun;
 
     private void Start()
     {
         _gun = GetComponentInChildren<Gun>();
-        _bulletSpawnPosition = _gun.ShootPoint.position;
 
         _timeBetweenShoots = _gun.Reload;
     }
