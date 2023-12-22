@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -6,7 +7,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, _bulletData.LifeTime);
+        StartCoroutine(Destroy());
     }
 
     private void Update()
@@ -26,5 +27,12 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             enemy.BulletHit?.Invoke(_bulletData.Damage);
         }
+    }
+
+    private IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(_bulletData.LifeTime);
+
+        gameObject.SetActive(false);
     }
 }
