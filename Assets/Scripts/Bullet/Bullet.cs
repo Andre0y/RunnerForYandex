@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy))
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             enemy.BulletHit?.Invoke(_bulletData.Damage);
         }
     }
