@@ -4,11 +4,14 @@ public class AddLifeTimeGate : BaseGate
 {
     [SerializeField] private int _additiveLifeTime;
 
+    private GunData _gunData;
+
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Player player))
         {
-            BulletData.UpgradeLifeTime(_additiveLifeTime);
+            _gunData = player.GetComponentInChildren<GunData>();
+            _gunData.UpgradeLifeTime(_additiveLifeTime);
         }
 
         base.OnTriggerEnter(other);

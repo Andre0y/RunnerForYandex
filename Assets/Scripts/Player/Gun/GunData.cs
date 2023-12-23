@@ -8,4 +8,10 @@ public class GunData : ScriptableObject
     public int Damage;
     public float FiringRange;
     public float BulletSpeed;
+
+    public int UpgradeDamage(int additiveDamage) => Damage += additiveDamage;
+
+    public float UpgradeSpeed(float additiveSpeed) => BulletSpeed += additiveSpeed;
+
+    public float UpgradeLifeTime(float additiveFiringRange) => FiringRange += additiveFiringRange;
 }

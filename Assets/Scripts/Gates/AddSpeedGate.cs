@@ -4,11 +4,14 @@ public class AddSpeedGate : BaseGate
 {
     [SerializeField] private int _additiveSpeed;
 
+    private GunData _gunData;
+
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Player player))
         {
-            BulletData.UpgradeSpeed(_additiveSpeed);
+            _gunData = player.GetComponentInChildren<GunData>();
+            _gunData.UpgradeSpeed(_additiveSpeed);
         }
 
         base.OnTriggerEnter(other);
