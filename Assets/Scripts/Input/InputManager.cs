@@ -1,10 +1,7 @@
-﻿using System.Runtime.InteropServices;
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class InputManager
 {
-    [DllImport("__Internal")] private static extern string getDeviceType();
-
     public static float GetAxis(string axisName)
     {
         return Input.GetAxis(axisName);
@@ -17,10 +14,6 @@ public static class InputManager
 
     public static bool IsLeftMouseButtonDown()
     {
-        ////if (getDeviceType() == "mobile")
-        ////{
-        ////    return true;
-        ////}
 
         if (Input.GetMouseButton(0))
         {
