@@ -15,7 +15,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Start()
     {
-        _gun = GetComponentInChildren<Gun>();
+        _gun = FindObjectOfType<Gun>();
 
         _timeBetweenShoots = _gun.Reload;
     }
