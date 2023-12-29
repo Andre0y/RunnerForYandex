@@ -13,6 +13,8 @@ public class PlayerShoot : MonoBehaviour
     private Vector3 _bulletSpawnPosition => _gun.ShootPoint.position;
     private Gun _gun;
 
+    public Gun Gun => _gun;
+
     private void Start()
     {
         _gun = FindObjectOfType<Gun>();
