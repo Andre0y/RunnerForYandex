@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (InputManager.IsMoving("Mouse X") && InputManager.IsLeftMouseButtonDown())
         {
-            Vector3 newPositionX = transform.position + transform.right * InputManager.GetAxis("Mouse X");
+            Vector3 newPositionX = transform.position + transform.up * -InputManager.GetAxis("Mouse X");
             newPositionX.x = Mathf.Clamp(newPositionX.x, _minPositionX, _maxPositionX);
 
             transform.position = Vector3.MoveTowards(transform.position, newPositionX, _speedX * Time.deltaTime);
