@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,10 +6,14 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Bullet[] _bullets;
+    [SerializeField] private Transform _indexFinger;
+    [SerializeField] private float _indexFingerRotationX;
+    [SerializeField] private float _indexFingerRotationSpeed;
 
     private float _timeBetweenShoots;
     private float _timeAfterShoot;
     private int _currentBullet;
+    private Vector3 _indexFingerRotation;
     
     private Vector3 _bulletSpawnPosition => _gun.ShootPoint.position;
     private Gun _gun;
@@ -20,6 +25,8 @@ public class PlayerShoot : MonoBehaviour
         _gun = FindObjectOfType<Gun>();
 
         _timeBetweenShoots = _gun.Reload;
+
+        _indexFingerRotation = new Vector3(_indexFingerRotationX, _indexFinger.localRotation.y, _indexFinger.localRotation.z);
     }
 
     private void Update()
@@ -33,6 +40,8 @@ public class PlayerShoot : MonoBehaviour
 
         if (_timeAfterShoot >= _timeBetweenShoots)
         {
+            _indexFinger.DOLocalRotate(_indexFingerRotation, _indexFingerRotationSpeed).SetLoops(2, LoopType.Yoyo);
+
             if (_currentBullet > _bullets.Length - 1)
             {
                 _currentBullet = 0;
