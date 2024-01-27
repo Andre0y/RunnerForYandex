@@ -1,29 +1,39 @@
+using System.Collections;
 using UnityEngine;
 
 public class MoveWeapon : MonoBehaviour
 {
-    [SerializeField] private Transform _target;
-    [SerializeField] private Vector3 _offset;
     [SerializeField] private float _recoilTime;
-    private Vector3 _direction = Vector3.back;
-    [SerializeField] private WeaponRecoil _weaponRecoil;
+    private Vector3 _direction = Vector3.forward;
+    [SerializeField] private float _speedX;
+    [SerializeField] private float _speedZ;
+    [SerializeField] private float _moveZ;
+    [SerializeField] private float _minPositionX;
+    [SerializeField] private float _maxPositionX;
+    [SerializeField] private float _recoilForce;
 
-    private void OnValidate()
+    private Vector3 _newPositionZ;
+    private Vector3 _offsetZ;
+    private float _startPositionY;
+
+    private void Start()
     {
-        if (_target == null)
-        {
-            _target = FindObjectOfType<Player>().transform;
-        }
-        else if (_target && _offset == Vector3.zero)
-        {
-            _offset = _target.position - transform.position;
-        }
+        _startPositionY = transform.position.y;
     }
 
     private void Update()
     {
-        transform.position = _target.position - _offset;
-        _weaponRecoil.Move(_recoilTime, _direction, ref _offset);
-        _direction *= -1;
+        if (InputManager.IsMoving("Mouse X") && InputManager.IsLeftMouseButtonDown())
+        {
+            Vector3 newPositionX = transform.position + transform.right * InputManager.GetAxis("Mouse X");
+            newPositionX.x = Mathf.Clamp(newPositionX.x, _minPositionX, _maxPositionX);
+
+            transform.position = Vector3.MoveTowards(transform.position, newPositionX, _speedX * Time.deltaTime);
+        }
+
+        _newPositionZ = transform.position + transform.forward * _moveZ + _offsetZ;
+
+        transform.position = Vector3.MoveTowards(transform.position, _newPositionZ, _speedZ * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x, _startPositionY, transform.position.z);
     }
 }
