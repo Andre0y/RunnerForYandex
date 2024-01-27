@@ -1,6 +1,7 @@
 using UnityEngine;
 using Agava.YandexGames;
 using System.Collections;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class PlayerInfo
@@ -12,6 +13,7 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
     public PlayerInfo PlayerInfo;
+    [SerializeField] private Text _text;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class DataManager : MonoBehaviour
 #if !UNITY_EDITOR
             YandexGamesSdk.Initialize();
 #endif
+            LoadData();
         }
         else
         {
@@ -68,6 +71,7 @@ public class DataManager : MonoBehaviour
         PlayerAccount.GetCloudSaveData((result) =>
         {
             PlayerInfo = JsonUtility.FromJson<PlayerInfo>(result);
+            _text.text = $"{PlayerInfo.BulletData.Damage} {PlayerInfo.BulletData.Speed} {PlayerInfo.BulletData.LifeTime}";
         });
     }
 }

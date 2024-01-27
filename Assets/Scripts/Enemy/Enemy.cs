@@ -5,11 +5,20 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health;
+    [SerializeField] private GameRestarter _gameRestarter;
 
     private TextMeshProUGUI _healthText;
 
     public UnityAction<int> BulletHit;
     public int Health => _health;
+
+    private void OnValidate()
+    {
+        if (!_gameRestarter)
+        {
+            _gameRestarter = FindObjectOfType<GameRestarter>();
+        }
+    }
 
     private void Start()
     {
@@ -41,5 +50,15 @@ public class Enemy : MonoBehaviour
     {
         _health -= amount;
         _healthText.text = _health.ToString();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Player player))
+        {
+            gameObject.SetActive(false);
+            player.gameObject.SetActive(false);
+            _gameRestarter.Restart();
+        }
     }
 }
