@@ -7,7 +7,8 @@ public class BaseGate : MonoBehaviour
         if (other.TryGetComponent(out Player player))
         {
             gameObject.SetActive(false);
-            DataManager.Instance.SaveData();
         }
     }
+
+    protected void SaveData() => DataManager.Instance.SaveData();
 }

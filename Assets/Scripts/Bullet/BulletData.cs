@@ -7,9 +7,21 @@ public class BulletData : ScriptableObject
     public int Speed;
     public int LifeTime;
 
-    public int UpgradeDamage(int additiveDamage) => Mathf.Clamp(Damage += additiveDamage, 1, int.MinValue);
+    public void UpgradeDamage(int additiveDamage)
+    {
+        Damage += additiveDamage;
+        Damage = Mathf.Clamp(Damage, 1, int.MaxValue);
+    }
 
-    public int UpgradeSpeed(int additiveSpeed) => Mathf.Clamp(Speed += additiveSpeed, 20, int.MaxValue);
+    public void UpgradeSpeed(int additiveSpeed)
+    {
+        Speed += additiveSpeed;
+        Speed = Mathf.Clamp(Speed, 20, int.MaxValue);
+    }
 
-    public int UpgradeLifeTime(int additiveLifeTime) => Mathf.Clamp(LifeTime += additiveLifeTime, 1, int.MaxValue);
+    public void UpgradeLifeTime(int additiveLifeTime)
+    {
+        LifeTime += additiveLifeTime;
+        LifeTime = Mathf.Clamp(LifeTime, 1, int.MaxValue);
+    }
 }
