@@ -8,7 +8,7 @@ public class AddLifeTimeGate : BaseGate
     {
         if (other.TryGetComponent(out Player player))
         {
-            BulletData.UpgradeLifeTime(_additiveLifeTime);
+            BulletData.UpgradeLifeTime(Mathf.Clamp(_additiveLifeTime, 1, int.MaxValue));
         }
 
         base.OnTriggerEnter(other);
