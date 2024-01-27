@@ -11,6 +11,7 @@ public class MoveWeapon : MonoBehaviour
     [SerializeField] private float _minPositionX;
     [SerializeField] private float _maxPositionX;
     [SerializeField] private float _recoilForce;
+    [SerializeField] private bool _isMoving = false;
 
     private Vector3 _newPositionZ;
     private Vector3 _offsetZ;
@@ -31,9 +32,18 @@ public class MoveWeapon : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, newPositionX, _speedX * Time.deltaTime);
         }
 
-        _newPositionZ = transform.position + transform.forward * _moveZ + _offsetZ;
+        if (_isMoving)
+        {
+            _newPositionZ = transform.position + transform.forward * _moveZ + _offsetZ;
 
-        transform.position = Vector3.MoveTowards(transform.position, _newPositionZ, _speedZ * Time.deltaTime);
-        transform.position = new Vector3(transform.position.x, _startPositionY, transform.position.z);
+
+            transform.position = Vector3.MoveTowards(transform.position, _newPositionZ, _speedZ * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, _startPositionY, transform.position.z);
+        }
+    }
+
+    public void SetMove(bool isMoving)
+    {
+        _isMoving = isMoving;
     }
 }
