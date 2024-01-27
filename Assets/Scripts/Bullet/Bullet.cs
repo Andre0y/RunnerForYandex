@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * _bulletData.Speed);
+        transform.Translate(Vector3.up * Time.deltaTime * _bulletData.Speed);
     }
 
     private void OnTriggerEnter(Collider other)
