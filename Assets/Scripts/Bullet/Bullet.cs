@@ -4,8 +4,6 @@ using Agava.YandexGames;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private BulletData _bulletData;
-
     private void Start()
     {
         StartCoroutine(Destroy());
@@ -18,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(Vector3.up * Time.deltaTime * _bulletData.Speed);
+        transform.Translate(Vector3.up * Time.deltaTime * DataManager.Instance.PlayerInfo.BulletData.Speed);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,13 +24,13 @@ public class Bullet : MonoBehaviour
         if (other.TryGetComponent(out Enemy enemy))
         {
             gameObject.SetActive(false);
-            enemy.BulletHit?.Invoke(_bulletData.Damage);
+            enemy.BulletHit?.Invoke(DataManager.Instance.PlayerInfo.BulletData.Damage);
         }
     }
 
     private IEnumerator Destroy()
     {
-        yield return new WaitForSeconds(_bulletData.LifeTime);
+        yield return new WaitForSeconds(DataManager.Instance.PlayerInfo.BulletData.LifeTime);
 
         gameObject.SetActive(false);
     }
