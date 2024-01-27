@@ -8,7 +8,7 @@ public class AddSpeedGate : BaseGate
     {
         if (other.TryGetComponent(out Player player))
         {
-            BulletData.UpgradeSpeed(_additiveSpeed);
+            BulletData.UpgradeSpeed(Mathf.Clamp(_additiveSpeed, 20, int.MaxValue));
         }
 
         base.OnTriggerEnter(other);

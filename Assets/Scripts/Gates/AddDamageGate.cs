@@ -7,7 +7,7 @@ public class AddDamageGate : BaseGate
     {
         if (other.TryGetComponent(out Player player))
         {
-            BulletData.UpgradeDamage(_additiveDamage);
+            BulletData.UpgradeDamage(Mathf.Clamp(_additiveDamage, 1, int.MaxValue));
         }
 
         base.OnTriggerEnter(other);

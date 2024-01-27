@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Agava.YandexGames;
 
 public class Bullet : MonoBehaviour
 {
