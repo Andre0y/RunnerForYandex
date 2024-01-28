@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class BaseGate : MonoBehaviour
 {
-    [SerializeField] protected BulletData BulletData;
-
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Player player))
@@ -11,4 +9,6 @@ public class BaseGate : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    protected void SaveData() => DataManager.Instance.SaveData();
 }
