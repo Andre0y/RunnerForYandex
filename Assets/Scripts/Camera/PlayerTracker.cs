@@ -2,28 +2,41 @@ using UnityEngine;
 
 public class PlayerTracker : MonoBehaviour
 {
-    [SerializeField] private Transform _target;
-    [SerializeField] private Vector2 _offset;
-    [SerializeField] private float _moveSpeed = 4f;
+    [SerializeField] private Vector3 _offset;
+    
+    private Transform _target;
 
-    private void OnValidate()
+    private void Start()
     {
-        if (_target == null)
-        {
-            _target = FindObjectOfType<Player>().transform;
-        }
-
-        if (_offset == Vector2.zero && _target != null)
-        {
-            _offset.x = _target.position.z - transform.position.z;
-            _offset.y = _target.position.y - transform.position.y;
-        }
+        InitializeTarget();
     }
 
     private void LateUpdate()
     {
-        Vector3 newPosition = new Vector3(0, _target.position.y - _offset.y, _target.position.z - _offset.x);
+        if (_target == null)
+            return;
 
-        transform.position = Vector3.MoveTowards(transform.position,  newPosition, _moveSpeed);
+        FollowTarget();
+    }
+
+    private void InitializeTarget()
+    {
+        if(_target == null)
+        {
+            Player player = FindObjectOfType<Player>();
+
+            if(player != null)
+            {
+                _target = player.transform;
+            }
+        }
+    }
+
+    private void FollowTarget()
+    {
+        Vector3 targetPosition = _target.position + _offset;
+        targetPosition.x = 0;
+
+        transform.position = targetPosition;
     }
 }
