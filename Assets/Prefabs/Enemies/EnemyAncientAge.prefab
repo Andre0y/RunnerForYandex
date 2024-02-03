@@ -184,6 +184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: man-knight
       objectReference: {fileID: 0}
+    - target: {fileID: 7626415567794547239, guid: f19618e8ceda22d43801d882cf9985bb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1786155537346893311, guid: f19618e8ceda22d43801d882cf9985bb, type: 3}
     m_RemovedGameObjects: []
