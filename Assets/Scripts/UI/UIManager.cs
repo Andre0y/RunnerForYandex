@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private MoveWeapon _moveWeapon;
+    private MoveWeapon _moveWeapon;
+    
+    private bool _isAllowedMoving;
 
     private void Start()
     {
         _moveWeapon = FindAnyObjectByType<MoveWeapon>();
     }
-
-    private void Update()
+    
+    public void AllowMoving()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            _moveWeapon.SetMove(true);
-        }
+        _isAllowedMoving = true;
+        _moveWeapon.SetMove(_isAllowedMoving);
     }
 }

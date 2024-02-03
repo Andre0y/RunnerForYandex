@@ -11,11 +11,11 @@ public class MoveWeapon : MonoBehaviour
     [SerializeField] private float _minPositionX;
     [SerializeField] private float _maxPositionX;
     [SerializeField] private float _recoilForce;
-    [SerializeField] private bool _isMoving = false;
 
     private Vector3 _newPositionZ;
     private Vector3 _offsetZ;
     private float _startPositionY;
+    private bool _isMoving = false;
 
     private void Start()
     {
@@ -24,19 +24,18 @@ public class MoveWeapon : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.IsMoving("Mouse X") && InputManager.IsLeftMouseButtonDown())
-        {
-            Vector3 newPositionX = transform.position + transform.right * InputManager.GetAxis("Mouse X");
-            newPositionX.x = Mathf.Clamp(newPositionX.x, _minPositionX, _maxPositionX);
-
-            transform.position = Vector3.MoveTowards(transform.position, newPositionX, _speedX * Time.deltaTime);
-        }
-
         if (_isMoving)
         {
+            if (InputManager.IsMoving("Mouse X") && InputManager.IsLeftMouseButtonDown())
+            {
+                Vector3 newPositionX = transform.position + transform.right * InputManager.GetAxis("Mouse X");
+                newPositionX.x = Mathf.Clamp(newPositionX.x, _minPositionX, _maxPositionX);
+
+                transform.position = Vector3.MoveTowards(transform.position, newPositionX, _speedX * Time.deltaTime);
+            }
+
             _newPositionZ = transform.position + transform.forward * _moveZ + _offsetZ;
-
-
+            
             transform.position = Vector3.MoveTowards(transform.position, _newPositionZ, _speedZ * Time.deltaTime);
             transform.position = new Vector3(transform.position.x, _startPositionY, transform.position.z);
         }
