@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(Vector3.up * Time.deltaTime * DataManager.Instance.PlayerInfo.BulletData.Speed);
+        transform.Translate(Vector3.up * Time.deltaTime * 15f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,13 +24,13 @@ public class Bullet : MonoBehaviour
         if (other.TryGetComponent(out Enemy enemy))
         {
             gameObject.SetActive(false);
-            enemy.BulletHit?.Invoke(DataManager.Instance.PlayerInfo.BulletData.Damage);
+            enemy.BulletHit?.Invoke(15);
         }
     }
 
     private IEnumerator Destroy()
     {
-        yield return new WaitForSeconds(DataManager.Instance.PlayerInfo.BulletData.LifeTime);
+        yield return new WaitForSeconds(1);
 
         gameObject.SetActive(false);
     }
