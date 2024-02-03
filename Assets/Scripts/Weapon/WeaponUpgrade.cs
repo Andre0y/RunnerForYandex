@@ -17,7 +17,7 @@
 
     public void UpgradeRange(float increment)
     {
-        Config.Range += increment;
+        Config.BulletRange += increment;
     }
 }
 

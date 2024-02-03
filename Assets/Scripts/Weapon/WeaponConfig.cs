@@ -7,6 +7,6 @@ public class WeaponConfig : ScriptableObject
     public GameObject BulletPrefab;
     public float BulletSpeed;
     public float Damage;
-    public float Range;
+    public float BulletRange;
 }
 
