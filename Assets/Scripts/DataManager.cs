@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class PlayerInfo
 {
-    public BulletData BulletData;
+    //public BulletData BulletData;
 }
 
 public class DataManager : MonoBehaviour
@@ -71,7 +71,7 @@ public class DataManager : MonoBehaviour
         PlayerAccount.GetCloudSaveData((result) =>
         {
             PlayerInfo = JsonUtility.FromJson<PlayerInfo>(result);
-            _text.text = $"{PlayerInfo.BulletData.Damage} {PlayerInfo.BulletData.Speed} {PlayerInfo.BulletData.LifeTime}";
+            //_text.text = $"{PlayerInfo.BulletData.Damage} {PlayerInfo.BulletData.Speed} {PlayerInfo.BulletData.LifeTime}";
         });
     }
 }

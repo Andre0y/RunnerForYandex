@@ -8,7 +8,7 @@ public class AddLifeTimeGate : BaseGate
     {
         if (other.TryGetComponent(out Player player))
         {
-            DataManager.Instance.PlayerInfo.BulletData.UpgradeLifeTime(_additiveLifeTime);
+            //DataManager.Instance.PlayerInfo.BulletData.UpgradeLifeTime(_additiveLifeTime);
             SaveData();
         }
 

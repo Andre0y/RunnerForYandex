@@ -7,7 +7,7 @@ public class AddDamageGate : BaseGate
     {
         if (other.TryGetComponent(out Player player))
         {
-            DataManager.Instance.PlayerInfo.BulletData.UpgradeDamage(_additiveDamage);
+            //DataManager.Instance.PlayerInfo.BulletData.UpgradeDamage(_additiveDamage);
             SaveData();
         }
 

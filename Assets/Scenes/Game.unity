@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 309366252}
   - component: {fileID: 309366251}
   - component: {fileID: 309366250}
+  - component: {fileID: 309366254}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -171,8 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a75b98428f85a41b502495e4e8bc72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 0}
-  _countAddedObjectsToPool: 1
+  _prefab: {fileID: 5740781849896295704, guid: 4191f7f7207678a4b96bb21adc122a46, type: 3}
+  _coutObjectStart: 15
 --- !u!114 &309366251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +203,19 @@ MonoBehaviour:
   _bulletPool: {fileID: 309366250}
   _firePoint: {fileID: 309366249}
 --- !u!114 &309366253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309366248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c1bc1b1019ece498b5798ce5bc4e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Config: {fileID: 11400000, guid: 012086855b080b140b1c87b45f66ae96, type: 2}
+--- !u!114 &309366254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -532,6 +546,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _animator: {fileID: 316974505}
+  _timeBetweenShoots: 0
+  _timeAfterShoot: 0
+  _currentBullet: 0
+  _gun: {fileID: 0}
 --- !u!4 &569225046
 Transform:
   m_ObjectHideFlags: 0
@@ -862,7 +880,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376462147}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bec2ff8bbb300e84ebe21017085ed221, type: 3}
   m_Name: 
